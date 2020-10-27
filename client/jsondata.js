@@ -1,4 +1,4 @@
-[
+const jsonData = `[
   {
     "question": "What was Tandem previous name?",
     "incorrect": ["Tandem", "Burger Shack", "Extraordinary Humans"],
@@ -109,4 +109,8 @@
     ],
     "correct": "Perform transactions in Latin"
   }
-]
+]`
+
+const triviaData = JSON.parse(jsonData)
+
+module.exports = triviaData
