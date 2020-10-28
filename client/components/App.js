@@ -1,14 +1,13 @@
 import React from 'react'
 import triviaData from '../jsondata'
+import QuestionCard from './QuestionCard'
 
 
 const App = () => {
-    console.log(triviaData)
     return (
-<div class="alert alert-primary" role="alert">
-  This is a primary alert—check it out!
+        <div>
+<QuestionCard />
 </div>
-        
     )
 }
 
