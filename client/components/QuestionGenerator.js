@@ -1,6 +1,6 @@
 import React from 'react'
 import triviaData from '../jsondata'
-import QuestionList from './QuestionList'
+import Game from './Game'
 
 const QuestionGenerator = () => {
     
@@ -33,7 +33,7 @@ const QuestionGenerator = () => {
     return (
         
         <div>
-            <QuestionList questions={questions} />
+            <Game questions={questions} />
         </div>
     )
 }

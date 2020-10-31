@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
+import PlayAgain from './PlayAgain'
+import Scoreboard from './Scoreboard'
 
-const QuestionList = (props) => {
+const Game = (props) => {
     const {questions} = props
     const [currentIdx, setIdx] = useState(1)
     const [currentQuestion, setQuestion] = useState(questions[0])
+    const [prevQuestion, setPrev] = useState(questions[currentIdx - 1])
     const [selected, setSelected] = useState(false)
     const [target, setTarget] = useState(0)
     const [result, setResult] = useState('')
@@ -14,14 +17,14 @@ const QuestionList = (props) => {
     const reset = () => {
         setIdx(1)
         setQuestion(questions[0])
+        setScore(0)
+        setResult(false)
     }
 
     const handleSelect = () => {
-        // event.preventDefault()
         console.log(event.target.value, 'the target val')
         setSelected(true)
         setTarget(event.target.value)
-        // setSelected(event.target.value)
     }
 
     const handleClick = () => {
@@ -29,7 +32,7 @@ const QuestionList = (props) => {
         console.log(currentQuestion.choices[target])
         if(typeof currentQuestion.choices[target] === 'object') {
             setScore(prev => prev + 1)
-            setResult(true)
+            setResult('correct')
         } else {
 
         
@@ -38,6 +41,7 @@ const QuestionList = (props) => {
         if(questions[currentIdx]  && currentIdx < questions.length) {
             setQuestion(questions[currentIdx])
             setIdx(currentIdx + 1)
+            setPrev(questions[currentIdx-1])
         }
         else {
             setIdx(questions.length + 1)
@@ -48,7 +52,7 @@ const QuestionList = (props) => {
     return (
         
         <div>
-            {score}
+            <Scoreboard score={score} current={currentIdx}/>
             {currentIdx === questions.length + 1 ?
         <div>
             <PlayAgain replay={reset} score={score}/>
@@ -83,7 +87,12 @@ const QuestionList = (props) => {
             <button type="submit" className="btn btn-primary" onClick={reset}>Reset</button>
             {selected ? <button type="submit" className="btn btn-primary" onClick={handleClick}>Next</button>  :
             <button type="submit" className="btn btn-primary" onClick={handleClick} disabled>Next</button> }
-            {result ? <div>You are correct!</div> : <div>Sorry incorrect</div>}
+            {result === '' ? <div></div> :
+            
+            result === 'correct' ? <div className="alert alert-success">You are correct!</div> : 
+            <div className="alert alert-danger">Sorry incorrect. The correct answer was {prevQuestion.correct}</div>
+        
+}
             </form>
           </div>
         </div> 
@@ -94,20 +103,7 @@ const QuestionList = (props) => {
 
 }
 
-export const PlayAgain = (props) => {
-    const {replay, score} = props
-    return (
-        <div className="card" style={{width: 18 + 'rem'}}>
-        <div className="card-body">
-            <h3 className="card-title">Your score was {score}</h3>
-            <h5 className="card-title">Do you want to play again?</h5>
-            <p className="card-text" color='black'>
-                <button type="submit" className="btn btn-primary" onClick={replay}>Play Again</button>
-            </p>
-</div>
-</div>
-    )
-}
 
 
-export default QuestionList
+
+export default Game
