@@ -4,28 +4,31 @@ const QuestionList = (props) => {
     const {questions} = props
     const [currentIdx, setIdx] = useState(1)
     const [currentQuestion, setQuestion] = useState(questions[0])
+    const [selectedAnswer, setSelected] = useState('')
+    const [score, setScore] = useState(0)
 
     const getChoices = (question) => {
         const choices = [{correct: question.correct}, ...question.incorrect]
         console.log(choices)
         const shuffle = (choices) => choices.sort(() => Math.random()- 0.5)
-        console.log(shuffle(choices), 'shuffled')
+        return shuffle(choices)
     }
-
-    getChoices(questions[0])
-
     const reset = () => {
         setIdx(1)
         setQuestion(questions[0])
     }
 
+    const handleSelect = () => {
+        console.log(event.target.value)
+        setSelected(event.target.value)
+    }
+
     const handleClick = () => {
         event.preventDefault()
-        
+
         if(questions[currentIdx]  && currentIdx < questions.length) {
             setQuestion(questions[currentIdx])
             setIdx(currentIdx + 1)
-            
             
         }
         else {
@@ -34,9 +37,11 @@ const QuestionList = (props) => {
         }
     }
 
+    const choices = getChoices(currentQuestion)
     return (
         
         <div>
+            {score}
             {currentIdx === questions.length + 1 ?
         <div>
             <PlayAgain replay={reset} />
@@ -52,12 +57,25 @@ const QuestionList = (props) => {
           <div className="card-body">
             <form>
             <ul className="list-group list-group-flush">
-                <li className="list-group-item"></li>
-                <li className="list-group-item">Dapibus ac facilisis in</li>
-                <li className="list-group-item">Vestibulum at eros</li>
+                {choices.map((choice) => {
+                    return(
+                        <div>
+                    
+                    
+                    <li className="list-group-item">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" onChange={handleSelect}
+                    value={choice}></input>
+                        {typeof choice === 'string' ? choice : choice.correct}</li>
+                    </div>
+                    
+                    )
+                })}
+                
+
           </ul>
             <button type="submit" className="btn btn-primary" onClick={reset}>Reset</button>
-              <button type="submit" className="btn btn-primary" onClick={handleClick}>Next</button>
+             { selectedAnswer.length ?  <button type="submit" className="btn btn-primary" onClick={handleClick}>Next</button> :
+                <button type="submit" className="btn btn-primary" onClick={handleClick} disabled>Next</button>}
             </form>
           </div>
         </div> 
