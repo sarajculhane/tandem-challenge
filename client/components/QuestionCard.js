@@ -2,12 +2,13 @@ import React from 'react'
 
 const QuestionCard = (props) => {
     const {question, handleClick, idx} = props
+    // const choices = {correct: question.correct, incorrect: question.incorrect}
     console.log(props)
     return (
         <div className="card" style={{width: 18 + 'rem'}}>
           <div className="card-body">
-            <h5 className="card-title">Question number</h5>
-            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 className="card-title">Question {idx}</h5>
+            <p className="card-text">{question.question}</p>
           </div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">Cras justo odio</li>
