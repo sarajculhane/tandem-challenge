@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 const QuestionList = (props) => {
-    let {questions} = props
+    const {questions} = props
     const [currentIdx, setIdx] = useState(1)
     const [currentQuestion, setQuestion] = useState(questions[0])
     const [selected, setSelected] = useState(false)
@@ -37,13 +37,14 @@ const QuestionList = (props) => {
             // console.log('game over')
         }
     }
+    console.log(questions)
     return (
         
         <div>
             {score}
             {currentIdx === questions.length + 1 ?
         <div>
-            <PlayAgain replay={reset} />
+            <PlayAgain replay={reset} score={score}/>
         </div>
           :
 
@@ -86,10 +87,11 @@ const QuestionList = (props) => {
 }
 
 export const PlayAgain = (props) => {
-    const {replay} = props
+    const {replay, score} = props
     return (
         <div className="card" style={{width: 18 + 'rem'}}>
         <div className="card-body">
+            <h3 className="card-title">Your score was {score}</h3>
             <h5 className="card-title">Do you want to play again?</h5>
             <p className="card-text" color='black'>
                 <button type="submit" className="btn btn-primary" onClick={replay}>Play Again</button>

@@ -13,7 +13,7 @@ const QuestionGenerator = () => {
         while(i < questions.length)  {
             let idx = Math.floor(Math.random()*questions.length)
             questions[i] = vals[idx]
-            vals.slice(idx, 1)[0]
+            vals.splice(idx, 1)
             i++
         }
         return questions
