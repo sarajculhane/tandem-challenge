@@ -1,19 +1,24 @@
 import React, {useState} from 'react'
+import QuestionCard from './QuestionCard'
 // import QuestionCard from './QuestionCard'
 
 const QuestionList = (props) => {
     const {questions} = props
-    const [currentIdx, setIdx] = useState(0)
-    const [currentQuestion, setQuestion] = useState(questions[currentIdx])
+    const [currentIdx, setIdx] = useState(1)
+    const [currentQuestion, setQuestion] = useState(questions[0])
     console.log(questions, currentIdx, currentQuestion)
     const handleClick = () => {
         event.preventDefault()
-        if(currentIdx < questions.length) {
-            setIdx(currentIdx + 1)
+        
+        if(questions[currentIdx]  && currentIdx <= questions.length) {
+            
+            console.log(currentIdx)
             setQuestion(questions[currentIdx])
+            setIdx(currentIdx + 1)
+            
             
         }
-        if(!questions[currentIdx]) {
+        if(currentIdx > questions.length) {
             // return (
             //     <div>Game Over</div>
             // )
@@ -40,9 +45,10 @@ const QuestionList = (props) => {
             </form>
           </div>
         </div> 
-    )
         </div>
     )
+        
+
 }
 
 
