@@ -18,7 +18,7 @@ const Game = (props) => {
         setIdx(1)
         setQuestion(questions[0])
         setScore(0)
-        setResult(false)
+        setResult('')
     }
 
     const handleSelect = () => {
