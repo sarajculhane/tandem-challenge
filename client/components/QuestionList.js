@@ -4,8 +4,16 @@ const QuestionList = (props) => {
     const {questions} = props
     const [currentIdx, setIdx] = useState(1)
     const [currentQuestion, setQuestion] = useState(questions[0])
-    console.log(questions, currentIdx, currentQuestion)
-    
+
+    const getChoices = (question) => {
+        const choices = [{correct: question.correct}, ...question.incorrect]
+        console.log(choices)
+        const shuffle = (choices) => choices.sort(() => Math.random()- 0.5)
+        console.log(shuffle(choices), 'shuffled')
+    }
+
+    getChoices(questions[0])
+
     const reset = () => {
         setIdx(1)
         setQuestion(questions[0])
@@ -40,13 +48,14 @@ const QuestionList = (props) => {
             <h5 className="card-title">Question {currentIdx}</h5>
             <p className="card-text" color='black'>{currentQuestion.question}</p>
           </div>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">Cras justo odio</li>
-            <li className="list-group-item">Dapibus ac facilisis in</li>
-            <li className="list-group-item">Vestibulum at eros</li>
-          </ul>
+   
           <div className="card-body">
             <form>
+            <ul className="list-group list-group-flush">
+                <li className="list-group-item"></li>
+                <li className="list-group-item">Dapibus ac facilisis in</li>
+                <li className="list-group-item">Vestibulum at eros</li>
+          </ul>
             <button type="submit" className="btn btn-primary" onClick={reset}>Reset</button>
               <button type="submit" className="btn btn-primary" onClick={handleClick}>Next</button>
             </form>
