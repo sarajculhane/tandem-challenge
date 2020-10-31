@@ -6,6 +6,7 @@ const QuestionList = (props) => {
     const [currentQuestion, setQuestion] = useState(questions[0])
     const [selected, setSelected] = useState(false)
     const [target, setTarget] = useState(0)
+    const [result, setResult] = useState('')
 
     const [score, setScore] = useState(0)
 
@@ -26,11 +27,17 @@ const QuestionList = (props) => {
     const handleClick = () => {
         event.preventDefault()
         console.log(currentQuestion.choices[target])
-        if(typeof currentQuestion.choices[target] === 'object') setScore(prev => prev + 1)
+        if(typeof currentQuestion.choices[target] === 'object') {
+            setScore(prev => prev + 1)
+            setResult(true)
+        } else {
+
+        
+            setResult(false)
+        }
         if(questions[currentIdx]  && currentIdx < questions.length) {
             setQuestion(questions[currentIdx])
             setIdx(currentIdx + 1)
-            setSelected(false)
         }
         else {
             setIdx(questions.length + 1)
@@ -76,6 +83,7 @@ const QuestionList = (props) => {
             <button type="submit" className="btn btn-primary" onClick={reset}>Reset</button>
             {selected ? <button type="submit" className="btn btn-primary" onClick={handleClick}>Next</button>  :
             <button type="submit" className="btn btn-primary" onClick={handleClick} disabled>Next</button> }
+            {result ? <div>You are correct!</div> : <div>Sorry incorrect</div>}
             </form>
           </div>
         </div> 
