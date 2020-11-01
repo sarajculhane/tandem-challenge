@@ -2,7 +2,7 @@
 
 This React Trivia App was created as part of submission for consideration for the Tandem Software Engineering Apprenticeship.  As part of the challenge, the following acceptance criteria was set by Tandem and certain features were slightly extended.
 
-Here is a link to the deployed site on Heroku :
+Here is a link to the deployed application on Heroku :
 
 https://tandem-saraculhane.herokuapp.com/
 
