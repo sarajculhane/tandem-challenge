@@ -4,7 +4,7 @@ import Game from './Game'
 
 const QuestionGenerator = () => {
     
-    // select a set of (unique) random questions a round
+    // select a set of (unique) random questions per round
     const randomSelect = () => {
         let i = 0
         const vals = [...triviaData]
@@ -20,12 +20,14 @@ const QuestionGenerator = () => {
     }
 
     // used to create a new property on each question with a random ordering of answers
-    // the correct answer is still an object so that we can check for this later
+    // the correct answer is still an object so that we can check for this later when user selects and submits
     const getChoices = (question) => {
         const choices = [{correct: question.correct}, ...question.incorrect]
         const shuffle = (choices) => choices.sort(() => Math.random()- 0.5)
         return shuffle(choices)
     }
+
+    // Obtain a set of questions using randomSelect than mutate each object within the array by adding the choices property
 
     const questions = randomSelect()
     questions.forEach((question) => question.choices = getChoices(question))

@@ -13,7 +13,8 @@ const Game = (props) => {
 
     const [score, setScore] = useState(0)
 
-
+    // The reset function is used to allow a user to reset their results at any point during the game 
+    // OR to replay upon completion
     const reset = () => {
         setIdx(1)
         setQuestion(questions[0])
@@ -21,22 +22,33 @@ const Game = (props) => {
         setResult('')
     }
 
+    // When the user selects a value, we set the selected state to be true (button no longer disabled)
+    // Then, we set the target value, which is the index of the item within the choices array 
+
     const handleSelect = () => {
-        console.log(event.target.value, 'the target val')
         setSelected(true)
         setTarget(event.target.value)
     }
+    
+
+    /* When a user submits their response and moves to next question, the following happens:
+    First, we check to see if the select was the correct answer (check for object as only the correct answer is an object)
+    If it is, we increase our score by 1 and set the result to "correct" so that it renders the desried message
+
+    Otherwise we set to incorrect
+
+    Second, we check to see if there are questions left in our set of questions,
+    If not, we set the length to be greater than the length of questions which will effectively terminate the game
+
+    */
 
     const handleClick = () => {
         event.preventDefault()
-        console.log(currentQuestion.choices[target])
         if(typeof currentQuestion.choices[target] === 'object') {
             setScore(prev => prev + 1)
             setResult('correct')
         } else {
-
-        
-            setResult(false)
+            setResult('incorrect')
         }
         if(questions[currentIdx]  && currentIdx < questions.length) {
             setQuestion(questions[currentIdx])
