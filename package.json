@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "build-client": "webpack",
-    "build-watch": "webpack -w"
+    "build-watch": "webpack -w",
+    "start" : "node express/app"
   },
   "keywords": [],
   "author": "",
