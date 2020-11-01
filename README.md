@@ -28,6 +28,7 @@ git clone https://github.com/sarajculhane/tandem-challenge.git
 npm install
 npm run build-watch
 node express/app.js ( will launch app on localhost:8080)
+npm test run (for jest tests)
 ```
 
 
