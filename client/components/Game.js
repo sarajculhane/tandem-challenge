@@ -7,7 +7,6 @@ const Game = (props) => {
     const [currentIdx, setIdx] = useState(1)
     const [currentQuestion, setQuestion] = useState(questions[0])
     const [prevQuestion, setPrev] = useState(questions[currentIdx - 1])
-    const [selected, setSelected] = useState(false)
     const [target, setTarget] = useState(1000)
     const [result, setResult] = useState('')
 
@@ -15,6 +14,8 @@ const Game = (props) => {
 
     // The reset function is used to allow a user to reset their results at any point during the game 
     // OR to replay upon completion
+
+    // ***NOTE*** that reseting will regenerate a new set of question while playing again takes the user through same set again
     const reset = () => {
         setIdx(1)
         setQuestion(questions[0])
@@ -27,7 +28,6 @@ const Game = (props) => {
     // Then, we set the target value based on the users current selection, which is the index of the item within the choices array 
 
     const handleSelect = () => {
-        setSelected(true)
         setTarget(event.target.value)
     }
     
@@ -38,7 +38,7 @@ const Game = (props) => {
 
     Otherwise we set to incorrect
 
-    Second, we check to see if there are questions left in our set of questions,
+    Second, we check to see if there are questions left in our set of questions
     If not, we set the length to be greater than the length of questions which will effectively terminate the game
 
     */

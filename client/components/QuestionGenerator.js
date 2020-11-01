@@ -27,7 +27,7 @@ const QuestionGenerator = () => {
         return shuffle(choices)
     }
 
-    // Obtain a set of questions using randomSelect than mutate each object within the array by adding the choices property
+    // Obtain a set of questions using randomSelect then mutate each object within the array by adding the choices property
 
     const questions = randomSelect()
     questions.forEach((question) => question.choices = getChoices(question))
