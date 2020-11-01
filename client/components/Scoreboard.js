@@ -5,16 +5,16 @@ const Scoreboard = (props) => {
 
     return (
         <div className="card">
-        <div className="card-header">
-        Trivia Night: 10 Questions
+        <div className="card-header text-center">
+        <h4>Trivia Night: 10 Questions</h4>
         </div>
         <div className="card-body">
-            <h5 className="card-title"> {current < 11 ? <div>Question {current} out of 10 
-            <p className="card-text"> Your current score is {score}! </p>
+            <h6 className="card-title text-center"> {current < 11 ? <div>Question {current} out of 10 
+            <p className="card-text text-center"> Your current score is {score}. </p>
             </div>
             : 
             
-            <div>No more questions left</div>}</h5>
+            <div>No more questions left</div>}</h6>
             
         </div>
 </div>

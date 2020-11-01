@@ -23,7 +23,7 @@ const Game = (props) => {
     }
 
     // When the user selects a value, we set the selected state to be true (button no longer disabled)
-    // Then, we set the target value, which is the index of the item within the choices array 
+    // Then, we set the target value based on the users current selection, which is the index of the item within the choices array 
 
     const handleSelect = () => {
         setSelected(true)
@@ -57,27 +57,26 @@ const Game = (props) => {
         }
         else {
             setIdx(questions.length + 1)
-            // console.log('game over')
         }
     }
-    console.log(questions)
     return (
         
         <div>
             <Scoreboard score={score} current={currentIdx}/>
+        <div id="game">
             {currentIdx === questions.length + 1 ?
         <div>
             <PlayAgain replay={reset} score={score}/>
         </div>
           :
 
-        <div className="card" style={{width: 18 + 'rem'}}>
+        <div className="card" style={{width: 40 + 'rem'}}>
           <div className="card-body">
-            <h5 className="card-title">Question {currentIdx}</h5>
-            <p className="card-text" color='black'>{currentQuestion.question}</p>
+            <h5 className="card-title text-center">Question {currentIdx}</h5>
+            <p className="card-text text-center" color='black'>{currentQuestion.question}</p>
           </div>
    
-          <div className="card-body">
+          <div className="card-body cb-pad">
             <form>
             <ul className="list-group list-group-flush">
                 {currentQuestion.choices.map((choice, idx) => {
@@ -87,7 +86,7 @@ const Game = (props) => {
                     
                     
                     <li className="list-group-item">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" onChange={handleSelect} value={idx}></input>
+                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" onChange={handleSelect} value={idx}></input>
                         {typeof choice === 'string' ? choice : choice.correct}</li>
                     </div>
                     
@@ -96,9 +95,9 @@ const Game = (props) => {
                 
 
           </ul>
-            <button type="submit" className="btn btn-primary" onClick={reset}>Reset</button>
-            {selected ? <button type="submit" className="btn btn-primary" onClick={handleClick}>Next</button>  :
-            <button type="submit" className="btn btn-primary" onClick={handleClick} disabled>Next</button> }
+            <button type="submit" className="btn btn-primary btn-space" onClick={reset}>Reset</button>
+            {selected ? <button type="submit" className="btn btn-primary btn-space" onClick={handleClick}>Next</button>  :
+            <button type="submit" className="btn btn-primary btn-space" onClick={handleClick} disabled>Next</button> }
             {result === '' ? <div></div> :
             
             result === 'correct' ? <div className="alert alert-success">You are correct!</div> : 
@@ -109,6 +108,7 @@ const Game = (props) => {
           </div>
         </div> 
 }
+</div>
         </div>
     )
         

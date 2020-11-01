@@ -1,4 +1,27 @@
 body {
     background: lightgray;
-    color: black;
+    color:  steelblue;
+    
+}
+
+#game {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding-top : 3rem;
+}
+
+.btn-space {
+    margin-top : 5px;
+    margin-bottom: 8px;
+    margin-right: 10px;
+}
+
+.cb-pad {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.pad {
+    padding-right: 100px
 }
