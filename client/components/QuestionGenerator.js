@@ -31,7 +31,6 @@ const QuestionGenerator = () => {
 
     const questions = randomSelect()
     questions.forEach((question) => question.choices = getChoices(question))
-
     return (
         
         <div>
