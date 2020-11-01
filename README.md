@@ -10,7 +10,7 @@ This React Trivia App was created as part of submission for consideration for th
 - Correct answer is revealed after user submits an answer
 - A user can see the score they received at the end of the round
 
-** In this application, the user is a also able to reset the round, see score in real time and replay their round upon completion**
+**In this application, the user is a also able to reset the round, see score in real time and replay their round upon completion**
 
 
 ## Key Technologies Used
