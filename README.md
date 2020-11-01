@@ -25,6 +25,6 @@ This React Trivia App was created as part of submission for consideration for th
 
 - npm install
 - npm run build-watch
-- node express/app.js
+- node express/app.js ( will launch app on localhost:8080)
 
 
