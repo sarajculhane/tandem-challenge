@@ -2,6 +2,10 @@
 
 This React Trivia App was created as part of submission for consideration for the Tandem Software Engineering Apprenticeship.  As part of the challenge, the following acceptance criteria was set by Tandem and certain features were slightly extended.
 
+Here is a link to the deployed site on Heroku :
+
+https://tandem-saraculhane.herokuapp.com/
+
 ### Acceptance Criteria
 
 - A user can view questions
@@ -21,13 +25,14 @@ This React Trivia App was created as part of submission for consideration for th
 - Bootstrap 4
 - Express
 - Jest for Tests
+- Heroku for deployment
 
 ### How to run
 ```
 git clone https://github.com/sarajculhane/tandem-challenge.git
 npm install
 npm run build-watch
-node express/app.js ( will launch app on localhost:8080)
+npm start ( will launch app on localhost:8080)
 npm test run (for jest tests)
 ```
 
