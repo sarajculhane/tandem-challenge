@@ -24,9 +24,10 @@ This React Trivia App was created as part of submission for consideration for th
 ### How to run
 ```
 git clone https://github.com/sarajculhane/tandem-challenge.git
+npm install
+npm run build-watch
+node express/app.js ( will launch app on localhost:8080)
 ```
-- npm install
-- npm run build-watch
-- node express/app.js ( will launch app on localhost:8080)
+
 
 
