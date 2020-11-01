@@ -20,6 +20,7 @@ This React Trivia App was created as part of submission for consideration for th
 - React.js (utilizing Hooks and also required related tooling - Webpack and Babel)
 - Bootstrap 4
 - Express
+- Jest for Tests
 
 ### How to run
 ```
