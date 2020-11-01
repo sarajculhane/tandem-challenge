@@ -8,7 +8,7 @@ const Game = (props) => {
     const [currentQuestion, setQuestion] = useState(questions[0])
     const [prevQuestion, setPrev] = useState(questions[currentIdx - 1])
     const [selected, setSelected] = useState(false)
-    const [target, setTarget] = useState(0)
+    const [target, setTarget] = useState(1000)
     const [result, setResult] = useState('')
 
     const [score, setScore] = useState(0)
@@ -20,6 +20,7 @@ const Game = (props) => {
         setQuestion(questions[0])
         setScore(0)
         setResult('')
+        setTarget(1000)
     }
 
     // When the user selects a value, we set the selected state to be true (button no longer disabled)
@@ -86,8 +87,8 @@ const Game = (props) => {
                     
                     
                     <li className="list-group-item">
-                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" onChange={handleSelect} value={idx}></input>
-                        {typeof choice === 'string' ? choice : choice.correct}</li>
+                    <input className="form-check-input in-sp" type="radio" name="exampleRadios" id="exampleRadios1" onChange={handleSelect} value={idx}></input>
+                        <div className="pad">{typeof choice === 'string' ? choice : choice.correct}</div></li>
                     </div>
                     
                     )
@@ -96,7 +97,7 @@ const Game = (props) => {
 
           </ul>
             <button type="submit" className="btn btn-primary btn-space" onClick={reset}>Reset</button>
-            {selected ? <button type="submit" className="btn btn-primary btn-space" onClick={handleClick}>Next</button>  :
+            {target !== 1000 ? <button type="submit" className="btn btn-primary btn-space" onClick={handleClick}>Next</button>  :
             <button type="submit" className="btn btn-primary btn-space" onClick={handleClick} disabled>Next</button> }
             {result === '' ? <div></div> :
             

@@ -21,7 +21,12 @@ body {
     margin-left: 2px;
     margin-right: 2px;
 }
-
+.in-sp {
+    margin-left:1px;
+    
+}
 .pad {
-    padding-right: 100px
+    /* padding-right: 100px; */
+    margin-left: 15px;
+    padding: 1px;
 }
